@@ -1,0 +1,173 @@
+/* CSS Globales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F4F7FA; /* Fondo gris suave */
+}
+
+/* Navbar */
+.navbar {
+    background-color: #1E88E5; /* Azul vibrante */
+    color: white;
+}
+
+.navbar a {
+    color: white !important;
+}
+
+.navbar a:hover {
+    color: #81D4FA !important; /* Color al pasar el ratón */
+}
+
+/* Fondo de las secciones */
+.seccion-fondo-claro {
+    background-color: #ffffff; /* Fondo blanco para la sección */
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Sección de bienvenida */
+.seccion-bienvenida {
+    background-color: #0288D1; /* Azul fuerte */
+    color: white;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Formulario (Generales) */
+form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #0288D1;
+    font-weight: bold;
+}
+
+.form-group label {
+    color: #455A64; /* Color gris oscuro para las etiquetas */
+}
+
+/* Campos de entrada */
+.form-control {
+    border: 2px solid #0288D1; /* Borde azul claro */
+    border-radius: 5px;
+    padding: 12px;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #81D4FA; /* Color más brillante al hacer foco */
+    box-shadow: 0 0 5px rgba(129, 212, 250, 0.5); /* Sombra azul clara al enfoque */
+}
+
+/* Mensajes de error */
+.alert-danger {
+    background-color: #F44336; /* Rojo brillante */
+    color: white;
+}
+
+/* Botones */
+.btn {
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #0288D1; /* Azul */
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0277BD; /* Azul más oscuro */
+}
+
+.btn-success {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #388E3C; /* Verde más oscuro */
+}
+
+.btn-danger {
+    background-color: #D32F2F; /* Rojo brillante */
+    color: white;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #C62828; /* Rojo más oscuro */
+}
+
+/* Sección de Confirmación de Eliminar */
+.text-center {
+    text-align: center;
+}
+
+.btn-close {
+    background-color: transparent;
+    border: none;
+    color: #0288D1;
+}
+
+/* Tabla */
+.table {
+    width: 100%;
+    margin-top: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.table th, .table td {
+    padding: 15px;
+    text-align: left;
+    font-size: 1.1em;
+}
+
+.table th {
+    background-color: #0288D1; /* Encabezado con color azul */
+    color: white;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #E3F2FD; /* Color de fila alternada */
+}
+
+.table-striped tbody tr:hover {
+    background-color: #BBDEFB; /* Fondo suave al pasar el mouse */
+}
+
+/* Sección de Exito */
+.alert-success {
+    background-color: #8BC34A; /* Verde éxito */
+    color: white;
+    font-size: 1em;
+}
+
+.alert-success button {
+    background-color: transparent;
+    border: none;
+}
+
+/* Añadir transición a mensajes de alerta */
+#mensaje-exito {
+    transition: opacity 0.5s ease;
+    opacity: 1;
+}
+
+/* Animación para ocultar el mensaje de éxito */
+#mensaje-exito.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+

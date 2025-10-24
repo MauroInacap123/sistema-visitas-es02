@@ -1,10 +1,17 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.core.paginator import Paginator
 from .models import Visita
 from .forms import VisitaForm
 
 def lista_visitas(request):
-    visitas = Visita.objects.all().order_by('-fecha_visita', '-hora_entrada')
+    visitas_list = Visita.objects.all().order_by('-fecha_visita', '-hora_entrada')
+    
+    # Paginación: 10 visitas por página
+    paginator = Paginator(visitas_list, 10)
+    page_number = request.GET.get('page')
+    visitas = paginator.get_page(page_number)
+    
     return render(request, 'SistemaRegistros/lista_visitas.html', {'visitas': visitas})
 
 def registrar_visita(request):
