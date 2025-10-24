@@ -1,0 +1,159 @@
+{% extends 'SistemaRegistros/base.html' %}
+
+{% block title %}Editar Visita - Sistema de Registro{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="mb-4">
+            <h1>✏️ Editar Visita</h1>
+            <p class="text-muted">Modificar información de la visita de <strong>{{ visita.nombre }}</strong></p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Información del Visitante</h5>
+            </div>
+            <div class="card-body">
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    
+                    <div class="row">
+                        <!-- RUT -->
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.rut.id_for_label }}" class="form-label">
+                                RUT <span class="text-danger">*</span>
+                            </label>
+                            {{ form.rut }}
+                            {% if form.rut.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ form.rut.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Nombre -->
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.nombre.id_for_label }}" class="form-label">
+                                Nombre Completo <span class="text-danger">*</span>
+                            </label>
+                            {{ form.nombre }}
+                            {% if form.nombre.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ form.nombre.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <!-- Motivo -->
+                    <div class="mb-3">
+                        <label for="{{ form.motivo_visita.id_for_label }}" class="form-label">
+                            Motivo de la Visita <span class="text-danger">*</span>
+                        </label>
+                        {{ form.motivo_visita }}
+                        {% if form.motivo_visita.errors %}
+                            <div class="text-danger mt-1">
+                                {{ form.motivo_visita.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="row">
+                        <!-- Fecha -->
+                        <div class="col-md-4 mb-3">
+                            <label for="{{ form.fecha_visita.id_for_label }}" class="form-label">
+                                Fecha <span class="text-danger">*</span>
+                            </label>
+                            {{ form.fecha_visita }}
+                            {% if form.fecha_visita.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ form.fecha_visita.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Hora Entrada -->
+                        <div class="col-md-4 mb-3">
+                            <label for="{{ form.hora_entrada.id_for_label }}" class="form-label">
+                                Hora Entrada <span class="text-danger">*</span>
+                            </label>
+                            {{ form.hora_entrada }}
+                            {% if form.hora_entrada.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ form.hora_entrada.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Hora Salida -->
+                        <div class="col-md-4 mb-3">
+                            <label for="{{ form.hora_salida.id_for_label }}" class="form-label">
+                                Hora Salida
+                            </label>
+                            {{ form.hora_salida }}
+                            {% if form.hora_salida.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ form.hora_salida.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <!-- Estado -->
+                    <div class="mb-4">
+                        <label for="{{ form.estado.id_for_label }}" class="form-label">
+                            Estado <span class="text-danger">*</span>
+                        </label>
+                        {{ form.estado }}
+                        {% if form.estado.errors %}
+                            <div class="text-danger mt-1">
+                                {{ form.estado.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Errores generales del formulario -->
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+
+                    <!-- Botones -->
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            💾 Guardar Cambios
+                        </button>
+                        <a href="{% url 'lista_visitas' %}" class="btn btn-secondary btn-lg">
+                            ❌ Cancelar
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Información de la visita -->
+        <div class="card mt-3">
+            <div class="card-body">
+                <h6 class="mb-2">📋 Información de la Visita</h6>
+                <div class="row text-muted small">
+                    <div class="col-md-6">
+                        <p class="mb-1"><strong>RUT:</strong> {{ visita.rut }}</p>
+                        <p class="mb-1"><strong>Nombre:</strong> {{ visita.nombre }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="mb-1"><strong>Estado:</strong> 
+                            {% if visita.estado == 'EN_CURSO' %}
+                                <span class="badge bg-warning">En Curso</span>
+                            {% else %}
+                                <span class="badge bg-success">Finalizada</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

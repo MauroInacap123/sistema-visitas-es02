@@ -1,0 +1,22 @@
+# ==============================================================================
+# REQUIREMENTS.TXT - ES02
+# Sistema de Registro de Visitas para Empresa
+# ==============================================================================
+
+# Django Framework
+Django==5.2.6
+
+# Base de Datos PostgreSQL
+psycopg2-binary==2.9.9
+
+# Variables de Entorno
+python-decouple==3.8
+
+# Servidor WSGI para Producción
+gunicorn==21.2.0
+
+# Archivos Estáticos en Producción
+whitenoise==6.6.0
+
+# Utilidades adicionales (opcional)
+python-dateutil==2.8.2
