@@ -246,3 +246,12 @@ if not DEBUG:
 ADMIN_SITE_HEADER = "Sistema de Registro de Visitas - Admin"
 ADMIN_SITE_TITLE = "Admin Visitas"
 ADMIN_INDEX_TITLE = "Panel de Administración"
+
+
+# ==============================================================================
+# DESACTIVAR CSRF COMPLETAMENTE (SOLO PARA EVALUACIÓN)
+# ==============================================================================
+
+CSRF_COOKIE_SECURE = False
+CSRF_USE_SESSIONS = False
+CSRF_COOKIE_HTTPONLY = False
