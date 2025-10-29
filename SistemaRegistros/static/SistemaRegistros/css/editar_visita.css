@@ -1,0 +1,152 @@
+/* ========================================
+   EDITAR_VISITA.CSS
+   ======================================== */
+
+/* Header de la página */
+.page-header {
+  background: white;
+  border-radius: 8px;
+  padding: 25px 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.page-header h3 {
+  color: #1e3a8a;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-header h3 i {
+  color: #f59e0b;
+}
+
+.page-header p {
+  color: #6b7280;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Contenedor del formulario */
+.form-container {
+  background: white;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* Labels y campos de formulario */
+.form-label {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.form-label i {
+  margin-right: 6px;
+  color: #6b7280;
+}
+
+.required {
+  color: #dc2626;
+}
+
+.form-control, .form-select {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  outline: none;
+}
+
+textarea.form-control {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Mensajes de ayuda */
+.text-muted {
+  color: #9ca3af;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  display: block;
+}
+
+/* Mensajes de error */
+.text-danger {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 6px;
+  display: block;
+}
+
+/* Card informativa */
+.info-card {
+  background: #eff6ff;
+  border: 1px solid #93c5fd;
+  border-radius: 6px;
+  padding: 16px;
+  margin-top: 20px;
+}
+
+.info-card h6 {
+  color: #1e40af;
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.info-card h6 i {
+  margin-right: 8px;
+}
+
+.info-card ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #1e40af;
+  font-size: 0.875rem;
+}
+
+.info-card ul li {
+  margin-bottom: 6px;
+}
+
+.info-card .required {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+/* Botones */
+.d-flex.gap-2 {
+  gap: 12px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-header h3 {
+    font-size: 1.5rem;
+  }
+  
+  .form-container {
+    padding: 20px;
+  }
+  
+  .d-flex.gap-2 {
+    flex-direction: column;
+  }
+  
+  .d-flex.gap-2 .btn {
+    width: 100%;
+  }
+}

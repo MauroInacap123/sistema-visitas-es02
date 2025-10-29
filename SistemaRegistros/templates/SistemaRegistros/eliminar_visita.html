@@ -1,91 +1,112 @@
 {% extends 'SistemaRegistros/base.html' %}
+{% load static %}
 
-{% block title %}Eliminar Visita - Sistema de Registro{% endblock %}
+{% block title %}Eliminar Visita{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'SistemaRegistros/css/eliminar_visita.css' %}">
+{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-lg-6">
-        <div class="mb-4">
-            <h1>🗑️ Eliminar Visita</h1>
-            <p class="text-muted">Confirmar eliminación del registro</p>
-        </div>
+<div class="container">
+  <!-- Header -->
+  <div class="page-header">
+    <h3>
+      <i class="bi bi-trash"></i>
+      Eliminar Visita
+    </h3>
+    <p>Confirmar eliminación del registro</p>
+  </div>
 
-        <div class="card border-danger">
-            <div class="card-header bg-danger text-white">
-                <h5 class="mb-0">⚠️ Confirmación de Eliminación</h5>
-            </div>
-            <div class="card-body">
-                <div class="alert alert-warning" role="alert">
-                    <strong>⚠️ Advertencia:</strong> Esta acción no se puede deshacer.
-                </div>
-
-                <p class="mb-4">¿Está seguro que desea eliminar la siguiente visita?</p>
-
-                <!-- Información de la visita -->
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h6 class="card-title mb-3">Información del Visitante</h6>
-                        <dl class="row mb-0">
-                            <dt class="col-sm-4">RUT:</dt>
-                            <dd class="col-sm-8"><strong>{{ visita.rut }}</strong></dd>
-
-                            <dt class="col-sm-4">Nombre:</dt>
-                            <dd class="col-sm-8">{{ visita.nombre }}</dd>
-
-                            <dt class="col-sm-4">Motivo:</dt>
-                            <dd class="col-sm-8">{{ visita.motivo_visita }}</dd>
-
-                            <dt class="col-sm-4">Fecha:</dt>
-                            <dd class="col-sm-8">{{ visita.fecha_visita|date:"d/m/Y" }}</dd>
-
-                            <dt class="col-sm-4">Hora Entrada:</dt>
-                            <dd class="col-sm-8">{{ visita.hora_entrada|time:"H:i" }}</dd>
-
-                            <dt class="col-sm-4">Hora Salida:</dt>
-                            <dd class="col-sm-8">
-                                {% if visita.hora_salida %}
-                                    {{ visita.hora_salida|time:"H:i" }}
-                                {% else %}
-                                    <span class="text-muted">No registrada</span>
-                                {% endif %}
-                            </dd>
-
-                            <dt class="col-sm-4">Estado:</dt>
-                            <dd class="col-sm-8">
-                                {% if visita.estado == 'EN_CURSO' %}
-                                    <span class="badge bg-warning">🟡 En Curso</span>
-                                {% else %}
-                                    <span class="badge bg-success">✅ Finalizada</span>
-                                {% endif %}
-                            </dd>
-                        </dl>
-                    </div>
-                </div>
-
-                <!-- Formulario de confirmación -->
-                <form method="post">
-                    {% csrf_token %}
-                    <div class="d-flex gap-2 justify-content-end">
-                        <a href="{% url 'lista_visitas' %}" class="btn btn-secondary btn-lg">
-                            ❌ No, Cancelar
-                        </a>
-                        <button type="submit" class="btn btn-danger btn-lg">
-                            🗑️ Sí, Eliminar
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- Información adicional -->
-        <div class="card mt-3">
-            <div class="card-body">
-                <p class="mb-0 text-muted small">
-                    ℹ️ <strong>Nota:</strong> Una vez eliminado, el registro no podrá ser recuperado. 
-                    Asegúrese de que realmente desea eliminar esta visita antes de continuar.
-                </p>
-            </div>
-        </div>
+  <!-- Alerta de advertencia -->
+  <div class="alert alert-warning">
+    <i class="bi bi-exclamation-triangle-fill"></i>
+    <div>
+      <strong>¡Advertencia!</strong> Esta acción no se puede deshacer. El registro será eliminado permanentemente.
     </div>
+  </div>
+
+  <!-- Información -->
+  <div class="info-container">
+    <h5>¿Está seguro que desea eliminar la siguiente visita?</h5>
+    
+    <p>
+      Por favor, revise cuidadosamente la información antes de confirmar la eliminación.
+    </p>
+
+    <!-- Detalles de la visita -->
+    <div class="detail-card">
+      <h6><i class="bi bi-person-badge"></i> Información del Visitante</h6>
+      
+      <div class="detail-row">
+        <div class="detail-label">RUT:</div>
+        <div class="detail-value"><strong>{{ visita.rut }}</strong></div>
+      </div>
+
+      <div class="detail-row">
+        <div class="detail-label">Nombre:</div>
+        <div class="detail-value">{{ visita.nombre }}</div>
+      </div>
+
+      <div class="detail-row">
+        <div class="detail-label">Motivo:</div>
+        <div class="detail-value">{{ visita.motivo_visita }}</div>
+      </div>
+
+      <div class="detail-row">
+        <div class="detail-label">Fecha:</div>
+        <div class="detail-value">{{ visita.fecha_visita|date:"d/m/Y" }}</div>
+      </div>
+
+      <div class="detail-row">
+        <div class="detail-label">Hora Entrada:</div>
+        <div class="detail-value">{{ visita.hora_entrada|time:"H:i" }}</div>
+      </div>
+
+      <div class="detail-row">
+        <div class="detail-label">Hora Salida:</div>
+        <div class="detail-value">
+          {% if visita.hora_salida %}
+            {{ visita.hora_salida|time:"H:i" }}
+          {% else %}
+            <span class="no-registrada">No registrada</span>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="detail-row">
+        <div class="detail-label">Estado:</div>
+        <div class="detail-value">
+          {% if visita.estado == 'EN_CURSO' %}
+            <span class="badge bg-warning text-dark">⚠️ En Curso</span>
+          {% else %}
+            <span class="badge bg-success">✅ Finalizada</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Formulario de confirmación -->
+    <form method="post">
+      {% csrf_token %}
+      <div class="button-group">
+        <a href="{% url 'lista_visitas' %}" class="btn btn-secondary">
+          <i class="bi bi-x-circle"></i> No, Cancelar
+        </a>
+        <button type="submit" class="btn btn-danger">
+          <i class="bi bi-trash"></i> Sí, Eliminar Definitivamente
+        </button>
+      </div>
+    </form>
+
+    <!-- Nota informativa -->
+    <div class="note-box">
+      <p>
+        <i class="bi bi-info-circle-fill"></i>
+        <strong>Nota:</strong> Una vez eliminado, el registro no podrá ser recuperado. 
+        Asegúrese de que realmente desea eliminar esta visita antes de continuar.
+      </p>
+    </div>
+  </div>
 </div>
 {% endblock %}

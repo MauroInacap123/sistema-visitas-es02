@@ -73,11 +73,6 @@ WSGI_APPLICATION = 'proyectoVisitas.wsgi.application'
 
 
 # ==============================================================================
-# ==============================================================================
-# BASE DE DATOS - POSTGRESQL
-# ==============================================================================
-
-# ==============================================================================
 # BASE DE DATOS
 # ==============================================================================
 
@@ -152,7 +147,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Directorios adicionales de archivos estáticos
-STATICFILES_DIRS = []
+STATICFILES_DIRS = [BASE_DIR / 'SistemaRegistros' / 'static']
 
 
 # ==============================================================================
