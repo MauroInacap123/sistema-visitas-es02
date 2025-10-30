@@ -12,4 +12,4 @@ admin.site.logout = csrf_exempt(admin.site.logout)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('SistemaRegistros.urls')),
-]
+] 
